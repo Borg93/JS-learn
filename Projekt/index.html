@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head>
+  <script src="p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <script src="tf.min.js"></script>
+
+  <script language="javascript" type="text/javascript" src="ga.js"></script>
+  <script language="javascript" type="text/javascript" src="nn.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="car.js"></script>
+  <script language="javascript" type="text/javascript" src="obstacle.js"></script>
+  <script language="javascript" type="text/javascript" src="Timer.js"></script>
+
+  <style>
+
+  div.texten {
+  position: absolute;
+  left: 100px;
+  top: 300px;
+  font-size:large;
+  color:white;
+    line-height: 1.6;
+  }
+
+  div.skapad {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  font-size: xx-large;
+  color:white;
+  }
+
+  div.descript {
+  position: absolute;
+  left: 100px;
+  top: 150px;
+  font-size: medium;
+  color:white;
+  }
+
+  div.learned {
+  position: absolute;
+  left: 1050px;
+  top: 1px;
+  font-size: medium;
+  color:white;
+  background-color:grey 
+  }
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script src="sketch.js"></script>
+
+  <div class="skapad">
+    Created by: Gabriel Borg
+  </div>
+  <div class="descript">JavaScript project: Tensorflow with genetic algorithm <br> to train an agent to drive</div>
+
+  <div class="texten">
+  <p style="color:white">Elapsed time: <span id="time">0</span>
+    <br> Highest scoring car: <span id="hscore">0</span>
+    <br> All time best car score: <span id="all_time_hscore">0</span>
+    <br> Current generation: <span id="generation">1</span>
+    <br> Control the speed of the game: 
+  </p>
+  </div>
+
+    <div class="learned">
+  <p style="color:white">
+    <pre>
+  <b> Game description:<b>     
+  
+    The game used a car to navigate between
+    incoming obstacles/cars, were scores is given 
+    based how far the car travels without collisions. 
+    However, the game was intially realized with
+    keyValueListners to steer the car from left to
+    right side, it devoloped into to using artificell 
+    synapsis, i.e. neural networks, to let the car "learn" 
+    how to navigate by itself. Tensorflow.js was used to build
+    model that could solve this task and to experiment with
+    machine learning in frontend development. 
+
+    Basically, the car tries to find patterns between
+    incoming obstacles by evaluting input parameters
+    such as speed, relative position in x and y-coordinates 
+    of the car itself and the incoming cars. 
+
+    The algorithm to solve the problem uses a Darwin's 
+    principals of genetic evolution to create generations 
+    that evolves over time. This genetic algorithm's 
+    fitness function helps to select the best cars to 
+    evolve into a solution for the problem. Imagine that the 
+    car "brain" is made of a network of neurons with weights 
+    that is intially randomized, which is why we see alot "bad" cars 
+    in the beginning. As each iterations of generations 
+    passes the cars neurons are tuned to find a model that maximizes
+    the score, i.e. finding a car that confidently guesses 
+    how the car should operate in curtain situations. 
+    The output of the neural network are 2 diffrent actions
+     --> TurnRight or TurnLeft.
+
+  <b>Remarks:<b>  
+
+    Tensorflow.js runs within the browser on a single thread, which 
+    might be a bottleneck for the performance.
+    However, it seems that WebGL takes care of that issue.
+    Furthermore, Tensorflow.js layers API mirrors Keras, the python
+    version of the layers API, enabling users to easy build models 
+    by assembling a set of pre-defined layers in a high-level way.
+
+    There are alot parameters tune to improve the learning
+    rate of the problem, but also functions left to implement.
+    For instance, the ability to save the current best car.model
+    and the ability to load that model.
+
+    Intrestinly, the car eventually learns how to drive 
+    around 10-30 generations!! However, the cars is not
+    smart enough to find the optimal ways of driving and 
+    starts to develop a strange pattern to only 
+    aim between the obstalces. 
+    
+    Regarding the strange pattern were the car only aims 
+    between obstacles is very wierd but not unexpected, due to
+    that the problems itself becomes very simple if the aim is to
+    only get through the "hole" of incoming obstacles (i.e. there is 
+    only one solution). When the obstacles spacing is allowed to be 
+    less than the cars width than the problem gets to more complex 
+    for the car to learn (i.e. there are now 3 solutions to the problem). 
+    The car can't make predictions on how to navigate around the cars by 
+    going left or right. Even after 300 generations it never learned. 
+    Perhaps, if the weights of the neurons are pre-trained the 
+    car will have an easier way of finding a pattern to solve
+    the complex problem. Furthermore, reinforcement learning
+    or a Convolution neural network that uses pixels.
+
+    </pre>
+
+  </p>
+  </div>
+
+
+
+
+</body></html>
