@@ -2,6 +2,11 @@
 
 ### Tensorflow with genetic algorithm to train an agent to drive
 
+
+![Alt Text](https://giphy.com/embed/H1SyhOr3cq8WsOOdIJ)
+
+
+
 #### Game description:     
 The game used a car to navigate between incoming obstacles/cars, were scores is given based how far the car travels without collisions. However, the game was intially realized with keyValueListners to steer the car from left to right side, it devoloped into to using artificell synapsis, i.e. neural networks, to let the car "learn" how to navigate by itself. Tensorflow.js was used to build model that could solve this task and to experiment with machine learning in frontend development. Basically, the car tries to find patterns between incoming obstacles by evaluting input parameters such as speed, relative position in x and y-coordinates of the car itself and the incoming cars. The algorithm to solve the problem uses a Darwin's principals of genetic evolution to create generations that evolves over time. This genetic algorithm's fitness function helps to select the best cars to evolve into a solution for the problem. Imagine that the car "brain" is made of a network of neurons with weights that is intially randomized, which is why we see alot "bad" cars in the beginning. As each iterations of generations passes the cars neurons are tuned to find a model that maximizes the score, i.e. finding a car that confidently guesses how the car should operate in curtain situations. The output of the neural network are 2 diffrent actions --> TurnRight or TurnLeft.
 
